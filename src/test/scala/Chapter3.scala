@@ -97,7 +97,7 @@ class Chapter3 extends FunSuite with ShouldMatchers {
     val b1 = for { i <- java.util.TimeZone.getAvailableIDs if i.startsWith("America")} yield i.substring("America/".length)
 	scala.util.Sorting.quickSort(b1)
 	assert (b1(0) === "Adak")
-	// 
+	
     
   }
 
