@@ -92,12 +92,17 @@ class Chapter3 extends FunSuite with ShouldMatchers {
 	  Array[Int](10, 20, 30, 40, 50, 70, 100) should equal ( array.distinct)
   }
   
+  test ("8. TODO") {
+    
+    // TODO
+  }
+  
   test ("9. Make a collection of all time zones returned by java.util.TimeZone.getAvailableIDs that are in America.Strip off the America/ prefix and sort the result.") {
 	 
     val b1 = for { i <- java.util.TimeZone.getAvailableIDs if i.startsWith("America")} yield i.substring("America/".length)
 	scala.util.Sorting.quickSort(b1)
 	assert (b1(0) === "Adak")
-	//
+	
     
   }
 
