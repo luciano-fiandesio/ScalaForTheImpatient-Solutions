@@ -57,7 +57,7 @@ class Chapter1 extends FunSuite {
 		import scala.util.Random
 	*/
 	test("8. Convert random int to base 36") {
-		val rnd = scala.math.BigInt.probablePrime(100, scala.util.Random)
+        val rnd = scala.math.BigInt.probablePrime(100, scala.util.Random)
 	    println ("BASE 36: " + (rnd toString 36))
 	}
 	
