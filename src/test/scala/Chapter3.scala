@@ -15,9 +15,7 @@ class Chapter3 extends FunSuite with ShouldMatchers {
   }
   
   def generateRandomArray(n:Int) = {
-    
-    new Array[Int](Random.nextInt(n)) map(_ => Random.nextInt(n))
-    
+    (1 to n).toArray.map(Random.nextInt(_))
   }
   
   test("2. Write a loop that swaps adjacent elements of an array of integers.") {
@@ -37,7 +35,7 @@ class Chapter3 extends FunSuite with ShouldMatchers {
 	  Array[Int](20,10,40,30,50) should equal ( swapArray (array))
 	  
   }
-  
+
   def swapArray(array:Array[Int]) = {
 	  (for {
 	    b <- array.grouped(2) // returns Iterable
@@ -79,8 +77,7 @@ class Chapter3 extends FunSuite with ShouldMatchers {
   }
   
   def reverseSort(array:Array[Int]) = {
-	  scala.util.Sorting.quickSort(array)
-	  array.reverse
+    array.sortWith(_ > _)
   }
   
   def reverseSort(arrayB:ArrayBuffer[Int]) = {
@@ -94,7 +91,7 @@ class Chapter3 extends FunSuite with ShouldMatchers {
   
   test ("8. TODO") {
     
-    // TODO
+    // TODO:
   }
   
   test ("9. Make a collection of all time zones returned by java.util.TimeZone.getAvailableIDs that are in America.Strip off the America/ prefix and sort the result.") {
@@ -102,8 +99,15 @@ class Chapter3 extends FunSuite with ShouldMatchers {
     val b1 = for { i <- java.util.TimeZone.getAvailableIDs if i.startsWith("America")} yield i.substring("America/".length)
 	scala.util.Sorting.quickSort(b1)
 	assert (b1(0) === "Adak")
-	
-    
+  }
+
+  test ("10. Import java.awt.datatransfer._ and ..."){
+    import java.awt.datatransfer._
+    import collection.JavaConversions.asScalaBuffer
+
+    val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
+    val buff = asScalaBuffer(flavors.getNativesForFlavor(DataFlavor.imageFlavor))
+    assert(buff.isInstanceOf[collection.mutable.Buffer[String]])
   }
 
 }
