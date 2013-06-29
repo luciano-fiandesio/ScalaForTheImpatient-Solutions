@@ -69,8 +69,10 @@ class Chapter4 extends FunSuite {
 
   test("9. ") {
     assert(lteqgt(Array(4,3,1,2,6,9,4,6,7),4) == (3,2,4))
+    assert(lteqgt2(Array(4,3,1,2,6,9,4,6,7),4) == (3,2,4))
   }
 
+  //
   def lteqgt(values:Array[Int],v:Int) =  {
     var lt = 0
     var eq = 0
@@ -82,7 +84,12 @@ class Chapter4 extends FunSuite {
     }
     (lt, eq, gt)
   }
-
+  // or using partition:
+  def lteqgt2(values:Array[Int],v:Int) =  {
+    val lt = values.partition(_ < v)
+    val eqgt = lt._2.partition(_ == v)
+    (lt._1.length, eqgt._1.length, eqgt._2.length)
+  }
 
 
 }
