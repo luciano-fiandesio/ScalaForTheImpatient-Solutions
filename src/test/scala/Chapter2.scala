@@ -70,10 +70,21 @@ class Chapter2 extends FunSuite {
 		if(s.length==0) 1 else s(0)*productR(s drop 1)
 	}
 	
-	test("10. Write a function that computes xn, where n is an integer") {
-	
-		// TODO
+	test("10. Write a function that computes xn, where n is an integer, " +
+    "Use the following recursive definition:" +
+    "...") {
+	  for(i <- 1 to 20){
+      assert(myPower(5, i) == math.pow(5, i).toLong)
+    }
 	}
+
+  def myPower(x: Int, n: Int):Long = {
+    val res = if(n==0) 1 else
+    if(n < 0) 1 / (x * myPower(x, n-1))
+    else if(n % 2 != 0) x * myPower(x, n-1)
+    else myPower(x, n/2) * myPower(x, n/2)
+    res
+  }
 	
 
 }
